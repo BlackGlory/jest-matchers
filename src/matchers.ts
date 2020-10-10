@@ -66,4 +66,11 @@ expect.extend({
       }
     }
   }
+  // https://github.com/facebook/jest/issues/10241
+, toReturnWith(received: jest.MockInstance<unknown, unknown[]>, expected: unknown) {
+    return {
+      message: () => `expected ${received.mockName} to return with ${expected}`
+    , pass: received.mock.results.some(result => result.value === expected)
+    }
+  }
 })
