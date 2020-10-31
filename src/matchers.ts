@@ -8,6 +8,7 @@ declare global {
       toBeAsyncIterable(): R
       toBePromise(): R
       toBePromiseLike(): R
+      toBeResultOf(mocked: jest.MockInstance<unknown, unknown[]>): R
     }
   }
 }
@@ -71,6 +72,12 @@ expect.extend({
     return {
       message: () => `expected ${received.mockName} to return with ${expected}`
     , pass: received.mock.results.some(result => result.value === expected)
+    }
+  }
+, toBeResultOf(received: unknown, expected: jest.MockInstance<unknown, unknown[]>) {
+    return {
+      message: () => `expected ${received} to be a result of ${expected}`
+    , pass: expected.mock.results.some(result => result.value === received)
     }
   }
 })
