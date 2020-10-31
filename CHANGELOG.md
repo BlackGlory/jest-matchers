@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/BlackGlory/jest-matchers/compare/v0.1.1...v0.1.2) (2020-10-31)
+
+
+### Features
+
+* add toBeResultOf ([5ca9bfe](https://github.com/BlackGlory/jest-matchers/commit/5ca9bfee4303117a3e41f067a7d4826a7f421c78))
+
 ### [0.1.1](https://github.com/BlackGlory/jest-matchers/compare/v0.1.0...v0.1.1) (2020-10-10)
 
 
