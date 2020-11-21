@@ -1,4 +1,5 @@
 import '@src/matchers'
+import { Readable, Writable } from 'stream'
 
 describe('expect(received).toBeIterable()', () => {
   it('pass', () => {
@@ -53,6 +54,34 @@ describe('expect(received).toBePromiseLike()', () => {
     const target = {}
 
     expect(target).not.toBePromiseLike()
+  })
+})
+
+describe('expect(received).toBeNodeJSReadableStream()', () => {
+  it('pass', () => {
+    const target = new Readable()
+
+    expect(target).toBeNodeJSReadableStream()
+  })
+
+  it('not pass', () => {
+    const target = new Writable()
+
+    expect(target).not.toBeNodeJSReadableStream()
+  })
+})
+
+describe('expect(received).toBeNodeJSWritableStream()', () => {
+  it('pass', () => {
+    const target = new Writable()
+
+    expect(target).toBeNodeJSWritableStream()
+  })
+
+  it('not pass', () => {
+    const target = new Readable()
+
+    expect(target).not.toBeNodeJSWritableStream()
   })
 })
 
