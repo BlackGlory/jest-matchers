@@ -85,6 +85,21 @@ describe('expect(received).toBeNodeJSWritableStream()', () => {
   })
 })
 
+describe('expect(received).toBeJson()', () => {
+  it('pass', () => {
+    const target = {}
+
+    expect(target).toBeJson()
+  })
+
+  it('not pass', () => {
+    const target: any = {}
+    target.circularStrucure = target
+
+    expect(target).not.toBeJson()
+  })
+})
+
 // https://github.com/facebook/jest/issues/10241
 describe('expect(mocked).toReturnWith(expected)', () => {
   it('pass', () => {

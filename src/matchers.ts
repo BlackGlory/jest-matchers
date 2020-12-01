@@ -1,4 +1,4 @@
-import { isIterable, isAsyncIterable, isPromise, isPromiseLike, isNodeJSReadableStream, isNodeJSWritableStream } from '@blackglory/types'
+import { isIterable, isAsyncIterable, isPromise, isPromiseLike, isNodeJSReadableStream, isNodeJSWritableStream, isJson } from '@blackglory/types'
 
 /* eslint-disable */
 declare global {
@@ -10,6 +10,7 @@ declare global {
       toBePromiseLike(): R
       toBeNodeJSReadableStream(): R
       toBeNodeJSWritableStream(): R
+      toBeJson(): R
       toBeResultOf(mocked: jest.MockInstance<unknown, unknown[]>): R
     }
   }
@@ -91,6 +92,19 @@ expect.extend({
     } else {
       return {
         message: () => `expected ${received} to be a NodeJS.WritableStream`
+      , pass: false
+      }
+    }
+  }
+, toBeJson(received: unknown) {
+    if (isJson(received)) {
+      return {
+        message: () => `expected ${received} to be a Json`
+      , pass: true
+      }
+    } else {
+      return {
+        message: () => `expected ${received} to be a Json`
       , pass: false
       }
     }
