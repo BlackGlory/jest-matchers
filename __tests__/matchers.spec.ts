@@ -160,6 +160,20 @@ describe('expect(value).toMatchJson(filename)', () => {
   })
 })
 
+describe('expect(value).toMatchJsonSnapshot(filename)', () => {
+  it('pass', () => {
+    const target = { "key": "value" }
+
+    expect(target).toMatchJsonSnapshot(file('./to-match-json-snapshot.json'))
+  })
+
+  it('not pass', () => {
+    const target = { "target": "target" }
+
+    expect(target).not.toMatchJsonSnapshot(file('./to-match-json-snapshot.json'))
+  })
+})
+
 function file(filename: string): string {
   return path.join(__dirname, filename)
 }

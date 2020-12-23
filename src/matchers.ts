@@ -1,6 +1,6 @@
 import { isIterable, isAsyncIterable, isPromise, isPromiseLike, isNodeJSReadableStream, isNodeJSWritableStream, isJson } from '@blackglory/types'
-import * as fs from 'fs'
 import diff from 'jest-diff'
+import { readJsonSync, writeJsonSync, pathExistsSync } from 'fs-extra'
 
 /* eslint-disable */
 declare global {
@@ -15,6 +15,7 @@ declare global {
       toBeJson(): R
       toBeResultOf(mocked: jest.MockInstance<unknown, unknown[]>): R
       toMatchJson(filename: string): R
+      toMatchJsonSnapshot(filename: string): R
     }
   }
 }
@@ -127,7 +128,24 @@ expect.extend({
   }
 , toMatchJson(received: unknown, expected: string) {
     const filename = expected
-    const json = JSON.parse(fs.readFileSync(filename, 'utf-8'))
+    const json = readJsonSync(filename)
+
+    if (this.equals(received, json)) {
+      return {
+        message: () => `expected ${received} not to match ${filename}`
+      , pass: true
+      }
+    } else {
+      return {
+        message: () => `expected ${received} to match ${filename}\n${diff(received, json)}`
+      , pass: false
+      }
+    }
+  }
+, toMatchJsonSnapshot(received: unknown, expected: string) {
+    const filename = expected
+    if (!pathExistsSync(filename)) writeJsonSync(filename, received, { spaces: 2 })
+    const json = readJsonSync(filename)
 
     if (this.equals(received, json)) {
       return {
