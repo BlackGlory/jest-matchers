@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/BlackGlory/jest-matchers/compare/v0.1.5...v0.1.6) (2020-12-23)
+
+
+### Features
+
+* add toMatchJson ([491c1b8](https://github.com/BlackGlory/jest-matchers/commit/491c1b863d547260f466905d05793a98db02437e))
+
 ### [0.1.5](https://github.com/BlackGlory/jest-matchers/compare/v0.1.4...v0.1.5) (2020-12-01)
 
 
