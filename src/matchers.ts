@@ -1,4 +1,6 @@
 import { isIterable, isAsyncIterable, isPromise, isPromiseLike, isNodeJSReadableStream, isNodeJSWritableStream, isJson } from '@blackglory/types'
+import * as fs from 'fs'
+import diff from 'jest-diff'
 
 /* eslint-disable */
 declare global {
@@ -12,6 +14,7 @@ declare global {
       toBeNodeJSWritableStream(): R
       toBeJson(): R
       toBeResultOf(mocked: jest.MockInstance<unknown, unknown[]>): R
+      toMatchJson(filename: string): R
     }
   }
 }
@@ -99,7 +102,7 @@ expect.extend({
 , toBeJson(received: unknown) {
     if (isJson(received)) {
       return {
-        message: () => `expected ${received} to be a Json`
+        message: () => `expected ${received} not to be a Json`
       , pass: true
       }
     } else {
@@ -120,6 +123,22 @@ expect.extend({
     return {
       message: () => `expected ${received} to be a result of ${expected}`
     , pass: expected.mock.results.some(result => result.value === received)
+    }
+  }
+, toMatchJson(received: unknown, expected: string) {
+    const filename = expected
+    const json = JSON.parse(fs.readFileSync(filename, 'utf-8'))
+
+    if (this.equals(received, json)) {
+      return {
+        message: () => `expected ${received} not to match ${filename}`
+      , pass: true
+      }
+    } else {
+      return {
+        message: () => `expected ${received} to match ${filename}\n${diff(received, json)}`
+      , pass: false
+      }
     }
   }
 })

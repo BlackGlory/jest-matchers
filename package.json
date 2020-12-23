@@ -33,7 +33,8 @@
     }
   },
   "dependencies": {
-    "@blackglory/types": "^0.1.7"
+    "@blackglory/types": "^0.1.7",
+    "jest-diff": "^26.6.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",

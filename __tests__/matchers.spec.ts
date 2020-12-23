@@ -1,5 +1,6 @@
 import '@src/matchers'
 import { Readable, Writable } from 'stream'
+import * as path from 'path'
 
 describe('expect(received).toBeIterable()', () => {
   it('pass', () => {
@@ -144,3 +145,21 @@ describe('expect(value).toBeResultOf(mocked)', () => {
     expect(value).not.toBeResultOf(fn)
   })
 })
+
+describe('expect(value).toMatchJson(filename)', () => {
+  it('pass', () => {
+    const target = { "key": "value" }
+
+    expect(target).toMatchJson(file('./to-match-json.json'))
+  })
+
+  it('not pass', () => {
+    const target = { "target": "target" }
+
+    expect(target).not.toMatchJson(file('./to-match-json.json'))
+  })
+})
+
+function file(filename: string): string {
+  return path.join(__dirname, filename)
+}
