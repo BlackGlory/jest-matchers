@@ -37,7 +37,7 @@
     }
   },
   "dependencies": {
-    "@blackglory/types": "^0.1.7",
+    "@blackglory/types": "^0.2.13",
     "fs-extra": "^9.0.1",
     "jest-diff": "^26.6.2"
   },
