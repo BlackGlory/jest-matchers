@@ -1,4 +1,6 @@
-import { isIterable, isAsyncIterable, isPromise, isPromiseLike, isNodeJSReadableStream, isNodeJSWritableStream, isJson } from '@blackglory/types'
+import { isIterable, isAsyncIterable, isJson } from '@blackglory/types'
+import { isPromise, isPromiseLike } from 'extra-promise'
+import { isNodeJSReadableStream, isNodeJSWritableStream } from 'extra-stream'
 import diff from 'jest-diff'
 import { readJsonSync, writeJsonSync, pathExistsSync } from 'fs-extra'
 
