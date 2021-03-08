@@ -1,10 +1,11 @@
+import { go } from '@blackglory/go'
 import '@src/matchers'
 import { Readable, Writable } from 'stream'
 import * as path from 'path'
 
 describe('expect(received).toBeIterable()', () => {
   it('pass', () => {
-    const target = (function* () {})()
+    const target = go(function* () {})
 
     expect(target).toBeIterable()
   })
@@ -18,7 +19,7 @@ describe('expect(received).toBeIterable()', () => {
 
 describe('expect(received).toBeAsyncIterable()', () => {
   it('pass', () => {
-    const target = (async function* () {})()
+    const target = go(async function* () {})
 
     expect(target).toBeAsyncIterable()
   })
