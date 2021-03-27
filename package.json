@@ -38,9 +38,9 @@
   },
   "dependencies": {
     "@blackglory/go": "^0.1.0",
-    "@blackglory/types": "^0.4.0",
-    "@types/node": "^14.14.35",
-    "extra-promise": "^0.15.6",
+    "@blackglory/types": "^0.4.1",
+    "@types/node": "^14.14.37",
+    "extra-promise": "^0.16.2",
     "extra-stream": "^0.1.1",
     "fs-extra": "^9.0.1",
     "jest-diff": "^26.6.2"
@@ -48,17 +48,17 @@
   "devDependencies": {
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
-    "@types/fs-extra": "^9.0.8",
-    "@types/jest": "^26.0.15",
-    "@typescript-eslint/eslint-plugin": "^4.18.0",
-    "@typescript-eslint/parser": "^4.18.0",
-    "eslint": "^7.22.0",
+    "@types/fs-extra": "^9.0.9",
+    "@types/jest": "^26.0.22",
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
+    "eslint": "^7.23.0",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
     "standard-version": "^9.1.1",
-    "ts-jest": "^26.5.3",
+    "ts-jest": "^26.5.4",
     "tscpaths": "^0.0.9",
     "typescript": "^4.2.3"
   }
