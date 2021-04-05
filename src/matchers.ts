@@ -139,7 +139,7 @@ expect.extend({
       }
     } else {
       return {
-        message: () => `expected ${received} to match ${filename}\n${diff(received, json)}`
+        message: () => `expected ${received} to match ${filename}\n${diff(json, received)}`
       , pass: false
       }
     }
@@ -156,7 +156,7 @@ expect.extend({
       }
     } else {
       return {
-        message: () => `expected ${received} to match ${filename}\n${diff(received, json)}`
+        message: () => `expected ${received} to match ${filename}\n${diff(json, received)}`
       , pass: false
       }
     }
