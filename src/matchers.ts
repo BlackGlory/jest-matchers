@@ -1,8 +1,8 @@
 import { isIterable, isAsyncIterable, isJson } from '@blackglory/types'
 import { isPromise, isPromiseLike } from 'extra-promise'
 import { isNodeJSReadableStream, isNodeJSWritableStream } from 'extra-stream'
+import { pathExistsSync, writeJSONFileSync, readJSONFileSync } from 'extra-filesystem'
 import diff from 'jest-diff'
-import { readJsonSync, writeJsonSync, pathExistsSync } from 'fs-extra'
 
 /* eslint-disable */
 declare global {
@@ -130,7 +130,7 @@ expect.extend({
   }
 , toMatchJson(received: unknown, expected: string) {
     const filename = expected
-    const json = readJsonSync(filename)
+    const json = readJSONFileSync(filename)
 
     if (this.equals(received, json)) {
       return {
@@ -146,8 +146,11 @@ expect.extend({
   }
 , toMatchJsonSnapshot(received: unknown, expected: string) {
     const filename = expected
-    if (!pathExistsSync(filename)) writeJsonSync(filename, received, { spaces: 2 })
-    const json = readJsonSync(filename)
+    if (!pathExistsSync(filename)) {
+      writeJSONFileSync(filename, received, { spaces: 2 })
+    }
+
+    const json = readJSONFileSync(filename)
 
     if (this.equals(received, json)) {
       return {
