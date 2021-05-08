@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.16](https://github.com/BlackGlory/jest-matchers/compare/v0.1.14...v0.1.16) (2021-05-08)
+
+
+### Bug Fixes
+
+* diff ([a83d395](https://github.com/BlackGlory/jest-matchers/commit/a83d395a7e051b40aef60b0e7dabbf35ef571e74))
+
 ### [0.1.15](https://github.com/BlackGlory/jest-matchers/compare/v0.1.14...v0.1.15) (2021-04-05)
 
 
