@@ -40,8 +40,8 @@
     "@blackglory/go": "^0.1.0",
     "@blackglory/types": "^0.4.2",
     "@types/node": "14",
-    "extra-filesystem": "^0.3.0",
-    "extra-promise": "^0.16.4",
+    "extra-filesystem": "^0.3.2",
+    "extra-promise": "^0.17.0",
     "extra-stream": "^0.1.1",
     "jest-diff": "^26.6.2"
   },
