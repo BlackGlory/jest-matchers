@@ -2,7 +2,7 @@ import { isIterable, isAsyncIterable, isJson } from '@blackglory/types'
 import { isPromise, isPromiseLike } from 'extra-promise'
 import { isNodeJSReadableStream, isNodeJSWritableStream } from 'extra-stream'
 import { pathExistsSync, writeJSONFileSync, readJSONFileSync } from 'extra-filesystem'
-import diff from 'jest-diff'
+import { diff } from 'jest-diff'
 
 /* eslint-disable */
 declare global {
